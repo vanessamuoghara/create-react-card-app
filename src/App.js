@@ -25,7 +25,7 @@ const drawCard = () => {
 function App() {
   return (
     <div className="app">
-      <h1>my house of cards</h1>
+      <h1>my deck of cards application</h1>
       <button className="button" onClick={shuffleDeck}>
         SHUFFLE
       </button>
