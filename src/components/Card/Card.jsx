@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.css';
 
 function Card({ suit, rank, displayText }) {
-  console.log(suit, 'suit');
+  console.log(suit, 'cardSuit');
   return (
     <div className="card">
       <p className="rank">{rank}</p>
