@@ -100,7 +100,7 @@ const App = () => {
         DRAWN CARDS
       </button> */}
 
-      <Deck apples={cards} />
+      <Deck cards={cards} />
     </div>
   );
 };

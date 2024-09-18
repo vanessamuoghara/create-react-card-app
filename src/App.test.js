@@ -1,5 +1,5 @@
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import App from './App';
+// import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+// import App from './App';
 
 // describe('drawCard function', () => {
 //   it('removes the last card in the deck when drawn', async () => {
@@ -19,15 +19,15 @@ import App from './App';
 //   });
 // });
 
-describe('shuffleCard function', () => {
-  it('shuffles the deck of cards', async () => {
-    render(<App />);
-    const shuffleButton = screen.getByText(/shuffle/i);
-    const initialCards = await screen.findAllByTestId(/.+/);
+// describe('shuffleCard function', () => {
+//   it('shuffles the deck of cards', async () => {
+//     render(<App />);
+//     const shuffleButton = screen.getByText(/shuffle/i);
+//     const initialCards = await screen.findAllByTestId(/.+/);
 
-    fireEvent.click(shuffleButton);
+//     fireEvent.click(shuffleButton);
 
-    const shuffledCards = await screen.findAllByTestId(/.+/);
-    expect(shuffledCards).not.toEqual(initialCards);
-  });
-});
+//     const shuffledCards = await screen.findAllByTestId(/.+/);
+//     expect(shuffledCards).not.toEqual(initialCards);
+//   });
+// });

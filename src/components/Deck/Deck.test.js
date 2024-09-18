@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react';
-import Deck from '../Deck/Deck';
+import { render, screen } from '@testing-library/react';
+import Deck from './Deck';
 
 const cardsData = [
   {
@@ -7,22 +7,26 @@ const cardsData = [
     suit: 'hearts',
     imageLink:
       'https://upload.wikimedia.org/wikipedia/commons/a/a0/Naipe_copas.png',
-    id: 'card-test-id',
+    id: 'hearts_A',
+  },
+  {
+    rank: 'K',
+    suit: 'hearts',
+    imageLink:
+      'https://upload.wikimedia.org/wikipedia/commons/a/a0/Naipe_copas.png',
+    id: 'hearts_K',
   },
 ];
 test('renders deck component with correct ranks and suits', () => {
-  //   render(<Deck cards={cardsData} />);
-
-  //   cardsData.forEach((card) => {
-  //     const cardRank = screen.getByText(card.rank);
-  //     expect(cardRank).toBeInTheDocument();
-
-  //     const cardImage = screen.getByRole('img', {
-  //       name: `${card.rank} of ${card.suit}`,
-  //     });
-  //     expect(cardImage).toHaveAttribute('src', card.imageLink);
-  //     expect(cardImage).toHaveAttribute('alt', `${card.rank} of ${card.suit}`);
-  //   });
-  // });
   render(<Deck cards={cardsData} />);
+
+  const cardRank = screen.getByTestId('hearts_A');
+  expect(cardRank).toBeInTheDocument();
+
+  //   const cardImage = screen.getByRole('img', {
+  //     name: `${card.rank} of ${card.suit}`,
+  //   });
+  //   expect(cardImage).toHaveAttribute('src', card.imageLink);
+  //   expect(cardImage).toHaveAttribute('alt', `${card.rank} of ${card.suit}`);
+  // });
 });
