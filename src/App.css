@@ -3,22 +3,28 @@
   font-family: Arial, serif;
 }
 
-.deck {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-}
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
 .button {
-  padding: 8px;
-  margin: 2px 8px;
-  background-color: red;
+  background-color: darkred;
+  border: black;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+}
+
+.button:hover {
+  background-color: black;
+  transform: scale(1.2);
+}
+
+.button:active {
+  transform: scale(0.95);
 }

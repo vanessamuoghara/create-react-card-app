@@ -33,5 +33,10 @@
 }
 
 .rank {
-  color: green;
+  color: black;
+  position: relative;
+  top: -70px;
+  left: 0px;
+  padding: 10px;
+  font-size: medium;
 }
