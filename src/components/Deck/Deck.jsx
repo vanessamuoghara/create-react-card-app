@@ -1,10 +1,12 @@
-/* eslint-disable no-undef */
 import React from 'react';
 import Card from '../Card/Card';
 import './Deck.css';
 
 const Deck = ({ cards }) => {
   console.log(cards, 'cardsData');
+  if (!cards || !Array.isArray(cards)) {
+    return <div>No cards available</div>;
+  }
   return (
     <div className="deck-container">
       {cards.map((card) => (

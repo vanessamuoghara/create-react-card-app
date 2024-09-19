@@ -55,6 +55,7 @@ const App = () => {
 
   const [cards, setCards] = useState(createDeck());
   const [drawnCardsDeck, setNewDrawnCardsDeck] = useState([]);
+  // const [cardsData, setCardsData] = useState([]);
 
   const shuffleDeck = () => {
     const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
@@ -70,13 +71,13 @@ const App = () => {
       drawnCardsDeck.push(drawnCard);
 
       setCards(newCards);
-      console.log(`Drew card: ${drawnCard.displayText}`);
+      console.log(`Drew card: ${drawnCard.rank} of ${drawnCard.suit}`);
     } else {
       console.log('No cards left to draw');
     }
   };
 
-  const resetDeck = (suits, ranks) => {
+  const resetDeck = () => {
     setCards(createDeck());
     setNewDrawnCardsDeck([]);
   };
@@ -85,7 +86,7 @@ const App = () => {
     <div className="app">
       <h1>The House Of Cards</h1>
       <h2>Drawn Cards</h2>
-      <Deck apples={drawnCardsDeck} />
+      <Deck cards={drawnCardsDeck} />
       <button className="button" onClick={shuffleDeck}>
         SHUFFLE
       </button>
