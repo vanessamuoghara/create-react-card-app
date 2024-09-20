@@ -54,7 +54,7 @@ const App = () => {
   };
 
   const [cards, setCards] = useState(createDeck());
-  const [drawnCardsDeck, setNewDrawnCardsDeck] = useState([]);
+  const [drawnCardsDeck, setDrawnCardsDeck] = useState([]);
   // const [cardsData, setCardsData] = useState([]);
 
   const shuffleDeck = () => {
@@ -79,7 +79,7 @@ const App = () => {
 
   const resetDeck = () => {
     setCards(createDeck());
-    setNewDrawnCardsDeck([]);
+    setDrawnCardsDeck([]);
   };
 
   return (
