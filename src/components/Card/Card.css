@@ -1,24 +1,24 @@
 .card {
-  width: 140px;
-  height: 180px;
+  width: 12rem;
+  height: 15rem;
   background-color: white;
   border: 1px solid #000;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 0.5rem;
 }
 .card img {
   width: 100%;
 }
 
 .suit {
-  padding: 10px;
-  width: 50px;
+  padding: 0.1rem;
+  width: 4rem;
   flex-wrap: wrap;
   flex-direction: row;
-  height: 100px;
+  height: 10rem;
   background-size: auto;
 }
 

@@ -7,14 +7,14 @@
   background-color: darkred;
   border: black;
   color: white;
-  padding: 15px 32px;
+  padding: 1rem 2rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  margin: 20px 20px;
+  font-size: 1rem;
+  margin: 2rem 2rem;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   transition:
     background-color 0.3s,
     transform 0.2s;
