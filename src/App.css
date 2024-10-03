@@ -1,6 +1,7 @@
 .app {
   text-align: center;
   font-family: Arial, serif;
+  text-transform: uppercase;
 }
 
 .button {
@@ -10,21 +11,14 @@
   padding: 1rem 2rem;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 1rem;
   margin: 2rem 2rem;
   cursor: pointer;
   border-radius: 0.5rem;
-  transition:
-    background-color 0.3s,
-    transform 0.2s;
+  text-transform: uppercase;
 }
 
 .button:hover {
   background-color: black;
   transform: scale(1.2);
-}
-
-.button:active {
-  transform: scale(0.95);
 }
