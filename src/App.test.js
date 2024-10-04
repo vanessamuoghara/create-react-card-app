@@ -1,56 +1,58 @@
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import App from './App';
-// import Card from './components/Card/Card';
+import App, { shuffleArray } from './App';
 
-// const cardData = [
-//   {
-//     rank: 'A',
-//     suit: 'hearts',
-//     imageLink:
-//       'https://upload.wikimedia.org/wikipedia/commons/a/a0/Naipe_copas.png',
-//     id: 'hearts_A',
-//   },
-//   {
-//     rank: 'K',
-//     suit: 'hearts',
-//     imageLink:
-//       'https://upload.wikimedia.org/wikipedia/commons/a/a0/Naipe_copas.png',
-//     id: 'hearts_K',
-//   },
-// ];
-
-// describe('drawCard function', () => {
-//   it('removes the last card in the deck when drawn', async () => {
-//     render(<App />);
-//     render(
-//       <Card rank={Card.rank} suit={Card.suit} imageLink={Card.imageLink} />,
-//     );
-
-//     const initialCards = screen.getAllByTestId(
-//       `${Card.suit}_${Card.rank}`,
-//     ).length;
-//     console.log('Initial cards:', initialCards);
-
-//     fireEvent.click(screen.getByText('DRAW'));
-
-//     await waitFor(() => {
-//       const cardsAfterDraw = screen.getAllByTestId(/.+/);
-//       console.log('Cards after draw:', cardsAfterDraw.length);
-
-//       expect(cardsAfterDraw.length).toBe(initialCards - 1);
-//     });
-//   });
-// });
-
-describe('shuffleCard function', () => {
-  it('shuffles the deck of cards', async () => {
+describe('Card Game Functions', () => {
+  it('removes the last card in the deck when drawn', async () => {
     render(<App />);
-    const shuffleButton = screen.getByText(/shuffle/i);
+
     const initialCards = await screen.findAllByTestId(/.+/);
+    const initialCardCount = initialCards.length;
 
-    fireEvent.click(shuffleButton);
+    fireEvent.click(screen.getByText('DRAW'));
 
-    const shuffledCards = await screen.findAllByTestId(/.+/);
-    expect(shuffledCards).not.toEqual(initialCards);
+    await waitFor(() => {
+      const cardsAfterDraw = screen.getAllByTestId(/.+/);
+      expect(cardsAfterDraw.length).toEqual(initialCardCount - 1); // Expect one less card
+    });
+  });
+
+  describe('shuffleDeck function', () => {
+    it('shuffles the deck of cards', async () => {
+      render(<App />);
+
+      const shuffleButton = screen.getByText(/shuffle/i);
+      const initialCards = await screen.findAllByTestId(/.+/);
+
+      fireEvent.click(shuffleButton);
+
+      const shuffledCards = await screen.findAllByTestId(/.+/);
+      expect(shuffledCards).not.toEqual(initialCards);
+    });
+
+    it('maintains the same number of cards after shuffling', async () => {
+      render(<App />); // Render the App component here
+
+      const shuffleButton = screen.getByText(/shuffle/i);
+      const initialCards = await screen.findAllByTestId(/.+/);
+
+      fireEvent.click(shuffleButton);
+
+      const shuffledCards = await screen.findAllByTestId(/.+/);
+      expect(shuffledCards.length).toBe(initialCards.length);
+    });
+  });
+
+  describe('shuffleArray function', () => {
+    it('shuffles the cards correctly', () => {
+      const cards = [
+        { id: '1', rank: 'A', suit: 'hearts' },
+        { id: '2', rank: 'K', suit: 'hearts' },
+        { id: '3', rank: 'Q', suit: 'hearts' },
+      ];
+
+      const shuffledCards = shuffleArray(cards);
+      expect(shuffledCards).not.toEqual(cards);
+      expect(shuffledCards.length).toBe(cards.length);
+    });
   });
 });
