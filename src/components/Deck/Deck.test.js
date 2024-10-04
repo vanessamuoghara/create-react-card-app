@@ -22,11 +22,4 @@ test('renders deck component with correct ranks and suits', () => {
 
   const cardRank = screen.getByTestId('hearts_A');
   expect(cardRank).toBeInTheDocument();
-
-  //   const cardImage = screen.getByRole('img', {
-  //     name: `${card.rank} of ${card.suit}`,
-  //   });
-  //   expect(cardImage).toHaveAttribute('src', card.imageLink);
-  //   expect(cardImage).toHaveAttribute('alt', `${card.rank} of ${card.suit}`);
-  // });
 });
