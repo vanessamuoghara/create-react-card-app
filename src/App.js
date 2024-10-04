@@ -1,9 +1,26 @@
 import React, { useState } from 'react';
 import './App.css';
 import Deck from './components/Deck/Deck';
-import suits from './images';
+import spades from './images/spades.png';
+import cloves from './images/cloves.png';
+import hearts from './images/hearts.png';
+import diamonds from './images/diamonds.png';
+
+export const shuffleArray = (array) => {
+  if (!Array.isArray(array)) {
+    throw new TypeError('Expected an array to shuffle');
+  }
+  return [...array].sort(() => Math.random() - 0.5);
+};
 
 const App = () => {
+  const suits = [
+    { imageLink: spades, suit: 'spades' },
+    { imageLink: cloves, suit: 'cloves' },
+    { imageLink: hearts, suit: 'hearts' },
+    { imageLink: diamonds, suit: 'diamonds' },
+  ];
+
   const ranks = [
     'A',
     '2',
@@ -19,7 +36,6 @@ const App = () => {
     'Q',
     'K',
   ];
-  console.log(suits, 'suits');
 
   const createDeck = () => {
     return suits.flatMap((suit) =>
@@ -34,25 +50,23 @@ const App = () => {
 
   const [cards, setCards] = useState(createDeck());
   const [drawnCardsDeck, setDrawnCardsDeck] = useState([]);
-  // const [cardsData, setCardsData] = useState([]);
 
   const shuffleDeck = () => {
-    const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
+    const shuffledCards = shuffleArray(cards);
     setCards(shuffledCards);
-    console.log('Deck shuffled');
   };
 
   const drawCard = () => {
+    console.log('drawCard called');
+    console.log('Current cards before draw:', cards.length);
+
     if (cards.length > 0) {
       const newCards = [...cards];
       const drawnCard = newCards.pop();
-      console.log(drawnCardsDeck, 'drawncards');
-      drawnCardsDeck.push(drawnCard);
-
+      setDrawnCardsDeck((prevDeck) => [...prevDeck, drawnCard]);
       setCards(newCards);
-      console.log(`Drew card: ${drawnCard.rank} of ${drawnCard.suit}`);
-    } else {
-      console.error('No cards left to draw');
+      console.log('Drew card:', drawnCard);
+      console.log('Remaining cards after draw:', newCards.length);
     }
   };
 
@@ -66,21 +80,19 @@ const App = () => {
       <h1>The House Of Cards</h1>
       <h2>Drawn Cards</h2>
       <Deck cards={drawnCardsDeck} />
-
       <button className="button" onClick={shuffleDeck}>
-        SHUFFLE
+        Shuffle
       </button>
       <button className="button" onClick={drawCard}>
-        DRAW
+        Draw
       </button>
       <button className="button" onClick={resetDeck}>
-        RESET
+        Reset
       </button>
-      {/* <button className="button" onClick={drawnDeck}>
-        DRAWN CARDS
-      </button> */}
       <Deck cards={cards} />
+      {cards.length === 0 && <p>No cards left to draw!</p>}
     </div>
   );
 };
+
 export default App;
