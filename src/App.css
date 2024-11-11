@@ -1,24 +1,24 @@
 .app {
   text-align: center;
   font-family: Arial, serif;
-}
-
-.deck {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-}
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  text-transform: uppercase;
 }
 
 .button {
-  padding: 8px;
-  margin: 2px 8px;
-  background-color: red;
+  background-color: darkred;
+  border: black;
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  margin: 2rem 2rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background-color: black;
+  transform: scale(1.2);
 }

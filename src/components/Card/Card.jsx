@@ -1,15 +1,13 @@
 import React from 'react';
 import './Card.css';
 
-function Card({ suit, rank, displayText }) {
-  console.log(suit, 'cardSuit');
+const Card = ({ rank, imageLink, suit }) => {
   return (
-    <div className="card">
+    <div className="card" data-testid={`${suit}_${rank}`}>
       <p className="rank">{rank}</p>
-      {displayText}
-      <img className="suit" src={suit} alt="suit" />
+      <img className="suit" src={imageLink} alt={`${rank} of ${suit}`} />
     </div>
   );
-}
+};
 
 export default Card;
